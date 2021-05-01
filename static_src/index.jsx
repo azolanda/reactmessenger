@@ -1,9 +1,8 @@
 import { script } from './script';
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
 script();
-console.log('А это index.jsx');
 
 let messages = ['Привет', 'Как дела?'];
 
