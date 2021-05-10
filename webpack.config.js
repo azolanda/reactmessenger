@@ -1,5 +1,6 @@
 const path = require("path");
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: path.join(__dirname, "static_src", "index.jsx"),
@@ -18,12 +19,18 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 include: path.resolve(__dirname, "static_src"),
-                loader: 'babel-loader',
                 exclude: /node_modules/,
+                loader: 'babel-loader',
                 options: {
-                  presets: ['@babel/env', '@babel/react'],
-                }     
+                    presets: ['@babel/env', '@babel/react'],
+                }       
             },
         ],
     }, 
+    plugins: [
+        new HtmlWebpackPlugin({
+            filename: "index.html",
+            template: path.join(__dirname, "./", "index.html"),
+        })
+    ], 
 };
