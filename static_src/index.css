@@ -4,9 +4,11 @@
     margin: 0 auto;
 }
 
+.messageField {
+    width: 60vw;
+}
 
 .messages {
-    width: 60vw;
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 10px;

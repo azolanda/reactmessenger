@@ -8,10 +8,10 @@ import '../index.css';
 export const Layout = () => {
     return (
         <div className="container">
-            <div class="header">
+            <div className="header">
                 <Header />
             </div>
-            <div class="layout">
+            <div className="layout">
                 <ChatList />
                 <MessageButton messages={messages} />
             </div>
