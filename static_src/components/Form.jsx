@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { AUTHORS } from '../../utils/constants';
 import { TextField, Button } from '@material-ui/core';
 import '../index.css';
@@ -6,6 +6,7 @@ import '../index.css';
 
 export const Form = ({ onAddMessage }) => {
     const [text, setText] = useState('');
+    const input = useRef();
 
     const handleChange = (e) => {
         setText(e.target.value);
@@ -18,6 +19,10 @@ export const Form = ({ onAddMessage }) => {
         setText('');
     }
 
+    useEffect(() => {
+        input.current.focus();
+    }, []);
+
     return (
         <form onSubmit={handleSubmit} className="form">
             <TextField
@@ -27,7 +32,7 @@ export const Form = ({ onAddMessage }) => {
                 value={text}
                 onChange={handleChange}
                 fullWidth
-                margin="15px"
+                inputRef={input}
             />
             <Button
                 variant="contained"
