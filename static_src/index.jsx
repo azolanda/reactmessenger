@@ -1,31 +1,35 @@
 import { script } from './script';
-import React, { useState } from 'react';
+import { AUTHORS } from '../utils/constants';
+import { MessageField } from './components/MessageField.jsx';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 
 script();
 
-let messages = ['Привет', 'Как дела?'];
-
-const MessageComponent = (props) => {
-   return (
-      <div>
-         {props.text}
-      </div>
-   );
-}
-
-const MessageField = (props) => {
-   return props.mess.map(message => <MessageComponent text={message} />);
-};
+let messages = [
+   {
+      author: AUTHORS.HUMAN,
+      text: 'Привет',
+   },
+   {
+      author: AUTHORS.BOT,
+      text: 'Как дела?',
+   }
+];
 
 const MessageButton = (props) => {
-   let [value, setValue] = useState(props.messages);
+   const [value, setValue] = useState(props.messages);
 
    const updateMessages = () => {
-      let temp = [];
-      temp.push("Нормально");
-      setValue(value.concat(temp));
+      setValue([...value, { author: AUTHORS.HUMAN, text: "Нормально", }]);
    }
+
+   useEffect(() => {
+      if (value[value.length - 1].author === 'human') {
+         setValue([...value, { author: AUTHORS.BOT, text: "Хорошо, что нормально. Рад за тебя:)", }]);
+      }
+   }, [value]);
+
    return (
       <div>
          <MessageField mess={value} />
