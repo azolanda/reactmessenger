@@ -8,12 +8,16 @@ module.exports = {
     output: {
        path: path.join(__dirname, "build"),
        filename: "bundle.js",
+    //    publicPath: '/'
        publicPath: "/build/",
+  
     },
     mode: 'development',
     devtool:'source-map',
     devServer: {
         https: true,
+        historyApiFallback: true,
+        contentBase: './',
     },
     module: {
         rules: [

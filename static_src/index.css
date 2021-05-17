@@ -1,11 +1,14 @@
 .container {
     border: 1px solid rgb(130, 167, 248);
-    width: 1198px;
+    max-width: 1198px;
     margin: 0 auto;
 }
 
 .messageField {
     width: 60vw;
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-end; */
 }
 
 .messages {
@@ -13,31 +16,23 @@
     padding-bottom: 15px;
     padding-left: 10px;
     padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    border-radius: 15px;
 }
 
 .bot-message {
-
-    display: flex;
-    justify-content: flex-end;
-    /* max-width: 50%; */
-    border: 1px solid rgb(130, 167, 248);
-    border-radius: 15px;
-    /* width: auto; */
+    align-items: flex-end;
+    border: 1px solid rgb(148, 182, 245);
     background-color: rgb(148, 182, 245);
-    margin-bottom: 15px;
-    margin-top: 15px;
 }
 
 .human-message {
-    display: flex;
-    justify-content: flex-start;
-    /* max-width: 50%; */
+    align-items: flex-start;
     border: 1px solid rgb(250, 186, 241);
-    border-radius: 15px;
-    /* width: auto; */
     background-color: rgb(250, 186, 241);
-    margin-bottom: 15px;
-    margin-top: 15px;
 }
 
 .chats {
@@ -58,4 +53,10 @@
     background: rgb(188, 228, 229);
     padding-top: 25px;
     padding-bottom: 25px;
+
+}
+
+.list_header {
+    list-style-type: none;
+    text-align: left;
 }

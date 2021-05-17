@@ -1,13 +1,27 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../index.css';
+
+const chats = [
+    {
+        name: "Chat1",
+        id: "chat1",
+    },
+    {
+        name: "Chat2",
+        id: "chat2",
+    }
+]
 
 export const ChatList = () => {
     return (
-        <div className="chats">
+        <div className="container chats">
             <ul>
-                <li>Chat 1</li>
-                <li>Chat 2</li>
-                <li>Chat 3</li>
+                {chats.map(chat => (
+                    <li key={chat.id}>
+                        <Link to={`/chats/${chat.id}`}>{chat.name}</Link>
+                    </li>
+                ))}
             </ul>
         </div>
     );
