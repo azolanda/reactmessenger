@@ -1,7 +1,6 @@
 import React from 'react';
 import { MessageButton, messages } from '../App.jsx';
 import { ChatList } from './ChatList.jsx';
-import { Header } from './Header.jsx';
 
 import '../index.css';
 

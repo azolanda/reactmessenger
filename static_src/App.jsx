@@ -2,7 +2,7 @@ import { AUTHORS } from '../utils/constants';
 import { MessageField } from './components/MessageField.jsx';
 import { Form } from './components/Form.jsx';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import './index.css';
 
 export const messages = {
@@ -33,6 +33,7 @@ export const MessageButton = (props) => {
 
     const params = useParams();
     const { chatId } = params;
+    const history = useHistory();
 
     const updateMessages = (newMessage) => {
         setValue({
@@ -42,7 +43,7 @@ export const MessageButton = (props) => {
     }
 
     useEffect(() => {
-        if (!value[chatId]?.length) {
+        if (!value[chatId] || !value[chatId].length) {
             return;
         }
 
@@ -53,6 +54,13 @@ export const MessageButton = (props) => {
         }
     }, [value[chatId]]);
 
+    if (!value[chatId] || !value[chatId].length) {
+        console.log(history);
+        history.push("/");
+        // history.replaceState({ ...history }, "Error", "/");
+        history.go();
+        return;
+    }
 
     return (
         <>

@@ -16,8 +16,8 @@
     padding-bottom: 15px;
     padding-left: 10px;
     padding-right: 10px;
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     margin-bottom: 15px;
     margin-top: 15px;
     border-radius: 15px;
