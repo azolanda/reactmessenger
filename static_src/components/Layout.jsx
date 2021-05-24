@@ -8,7 +8,7 @@ export const Layout = () => {
     return (
         <div className="container layout">
             <ChatList />
-            <MessageButton messages={messages} />
+            <MessageButton />
         </div>
     );
 }

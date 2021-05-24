@@ -5,7 +5,7 @@ import { TextField, Button } from '@material-ui/core';
 import '../index.css';
 import { addChat } from '../store/chats/actions';
 
-const AddChatForm = ({ onAddChat }) => {
+const AddChatForm = () => {
     const [text, setText] = useState('');
     const dispatch = useDispatch();
     const input = useRef();
@@ -45,9 +45,9 @@ const AddChatForm = ({ onAddChat }) => {
     );
 };
 
-export const ChatList = (props) => {
+export const ChatList = () => {
     const chats = useSelector(state => state.chats.chatList);
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     return (
         <div className="container chats">

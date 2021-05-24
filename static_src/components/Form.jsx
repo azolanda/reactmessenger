@@ -1,12 +1,15 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { AUTHORS } from '../../utils/constants';
 import { TextField, Button } from '@material-ui/core';
+import { addMessage } from '../store/messages/actions';
 import '../index.css';
 
-
-export const Form = ({ onAddMessage }) => {
+export const Form = ({ chatId }) => {
     const [text, setText] = useState('');
     const input = useRef();
+    const dispatch = useDispatch();
 
     const handleChange = (e) => {
         setText(e.target.value);
@@ -15,7 +18,7 @@ export const Form = ({ onAddMessage }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        onAddMessage({ author: AUTHORS.HUMAN, text });
+        dispatch(addMessage({ author: AUTHORS.HUMAN, text }, chatId));
         setText('');
     }
 

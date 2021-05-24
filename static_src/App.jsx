@@ -3,44 +3,17 @@ import { MessageField } from './components/MessageField.jsx';
 import { Form } from './components/Form.jsx';
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { addMessage } from './store/messages/actions';
 import './index.css';
 
-export const messages = {
-    chat1: [
-        {
-            author: AUTHORS.HUMAN,
-            text: 'Привет',
-        },
-        {
-            author: AUTHORS.BOT,
-            text: 'Как дела?',
-        }
-    ],
-    chat2: [
-        {
-            author: AUTHORS.BOT,
-            text: 'Hi, friend!',
-        },
-        {
-            author: AUTHORS.BOT,
-            text: 'Как дела?',
-        }
-    ]
-}
-
 export const MessageButton = (props) => {
-    const [value, setValue] = useState(props.messages);
+    const value = useSelector(state => state.messages);
 
     const params = useParams();
     const { chatId } = params;
     const history = useHistory();
-
-    const updateMessages = (newMessage) => {
-        setValue({
-            ...value,
-            [chatId]: [...value[chatId], newMessage],
-        });
-    }
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (!value[chatId] || !value[chatId].length) {
@@ -50,7 +23,7 @@ export const MessageButton = (props) => {
         const lastMessage = value[chatId][value[chatId].length - 1];
 
         if (lastMessage.author === 'human') {
-            setValue({ ...value, [chatId]: [...value[chatId], { author: AUTHORS.BOT, text: "Хорошо, что нормально. Рад за тебя:)", }] });
+            dispatch(addMessage({ author: AUTHORS.BOT, text: "Привет от бота:)", }, chatId));
         }
     }, [value[chatId]]);
 
@@ -66,7 +39,7 @@ export const MessageButton = (props) => {
         <>
             <div>
                 <MessageField mess={value[chatId]} />
-                <Form onAddMessage={updateMessages} />
+                <Form chatId={chatId} />
             </div>
         </>
     );
