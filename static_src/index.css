@@ -1,0 +1,62 @@
+.container {
+    border: 1px solid rgb(130, 167, 248);
+    max-width: 1198px;
+    margin: 0 auto;
+}
+
+.messageField {
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-end; */
+}
+
+.messages {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    /* display: flex;
+    flex-direction: column; */
+    margin-bottom: 15px;
+    margin-top: 15px;
+    border-radius: 15px;
+}
+
+.bot-message {
+    align-items: flex-end;
+    border: 1px solid rgb(148, 182, 245);
+    background-color: rgb(148, 182, 245);
+}
+
+.human-message {
+    align-items: flex-start;
+    border: 1px solid rgb(250, 186, 241);
+    background-color: rgb(250, 186, 241);
+}
+
+.chats {
+    width: 40vw;
+    border: 1px solid rgb(130, 167, 248);
+}
+
+.layout {
+    display: flex;
+}
+
+.header {
+    /* width: 100%; */
+    border: 1px solid rgb(130, 167, 248);
+    text-align: center;
+    color: rgb(5, 55, 146);
+    font-size: large;
+    background: rgb(188, 228, 229);
+    padding-top: 25px;
+    padding-bottom: 25px;
+
+}
+
+.list_header {
+    list-style-type: none;
+    text-align: left;
+}
